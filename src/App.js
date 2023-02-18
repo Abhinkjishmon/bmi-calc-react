@@ -20,12 +20,24 @@ function App() {
     console.log(w, h);
     let b = calBmi(w,h);
     setBmi(b);
-    let bType = weightType(b)
-    setBmiType(bType)
-  }
+    // let bType = weightType(b)
+    setBmiType(weightType(b))
+    const range = {
+      underWeight: {low: calWeight(18.5, h)},
+      normal: {low: calWeight(18.5, h), high: calWeight(24.9, h)},
+      overWeight: {low: calWeight(25, h), high: calWeight(29.9, h)},
+      obesityOne: {low: calWeight(30, h), high: calWeight(34.9, h)},
+      obesityTwo: {low: calWeight(35, h), high: calWeight(39.9, h)},
+      obesityThree: {high: calWeight(40, h)}
+    };
+    setBmiRange(range);
+  };
 
   const calBmi = (w,h)=>{
     return (w/(h*h)).toFixed(2);
+  }
+  const calWeight = (b,h)=>{
+    return (b*h*h).toFixed(2);
   }
 
   const weightType = (bmi) =>{
@@ -60,7 +72,7 @@ function App() {
             <BmiScore bmiNo={bmi} bmiName={bmiType} />
           </div>
           <div className='col-12 col-sm-6 mb-5'>
-            <BmiList />
+            <BmiList  range={bmiRange}/>
           </div>
         </div>
       </div>
