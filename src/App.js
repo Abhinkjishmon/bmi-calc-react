@@ -7,7 +7,15 @@ import Form from './Components/Form';
 function App() {
 
   const [bmi, setBmi] = useState("00")
-  const [bmiType, setBmiType] = useState("Not Calculated")
+  const [bmiType, setBmiType] = useState("Not Calculated");
+  const [bmiRange, setBmiRange] = useState({
+    underWeight: {low: ""},
+    normal: {low: "",high: ""},
+    overWeight: {low:"",high:""},
+    obesityOne: {low:"",high:""},
+    obesityTwo: {low:"",high:""},
+    obesityThree: {high:""}
+  });
   const onFormSub = (w, h) => {
     console.log(w, h);
     let b = calBmi(w,h);
@@ -51,7 +59,7 @@ function App() {
           <div className='col-12 col-sm-6 mb-5'>
             <BmiScore bmiNo={bmi} bmiName={bmiType} />
           </div>
-          <div className='col-12 col-sm-6'>
+          <div className='col-12 col-sm-6 mb-5'>
             <BmiList />
           </div>
         </div>
