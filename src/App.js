@@ -6,14 +6,19 @@ import Form from './Components/Form';
 
 function App() {
 
-  const [bmi,setbmi] = useState("")
-  const [bmiType,setbmiType] = useState("")
+  const [bmi, setbmi] = useState("")
+  const [bmiType, setbmiType] = useState("")
   return (
-    <div>
-      <Form />
-      <BmiScore bmiNo={bmi} bmiName={bmiType}/>
-      <BmiList />
-    </div>
+    <>
+      <div className='container'>
+        <div className="row justify-content-center mt-5 mx-2">
+          <Form />
+        </div>
+        <BmiScore bmiNo={bmi} bmiName={bmiType} />
+        <BmiList />
+      </div>
+
+    </>
   );
 }
 
