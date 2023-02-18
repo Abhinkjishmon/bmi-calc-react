@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const Form = () => {
+const Form = ({getData}) => {
     const [weight, setweight] = useState("");
     const [height, setheight] = useState("");
     const [alert,setAlert] = useState(false);
@@ -15,6 +15,7 @@ const Form = () => {
             setAlert(true)
         }
         else{
+            getData(weight,height)
             console.log(weight);
             console.log(height);
             setAlert(false)
